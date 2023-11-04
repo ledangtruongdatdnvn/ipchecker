@@ -1,0 +1,42 @@
+version: "3"
+services:
+  nginx:
+    depends_on:
+      - api
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "80:8080"
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: "./server"
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+    environment:
+      - NODE_ENV=development
+      - DATABASE_HOST=127.0.0.1
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=0384167161
+      - DATABASE_NAME=testdb
+      - DATABASE_DIALECT=mysql
+      - JWT_SECRET=ledangtruongdat
+      - BCRYPT_SALT_ROUND=10
+      - API_VERSION=/api/v1
+      - APP_URL=http://localhost
+      - PORT=5000
+      - OPEN_API_KEY=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
+  client:
+    stdin_open: true
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000/api/v1
+    build:
+      dockerfile: Dockerfile
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
