@@ -25,7 +25,7 @@ export const register = async (req, res) => {
   const user = await db.User.findOne({
     where: { email },
   }).catch((err) => {
-    console.log(constants.ERR.DEFAULT, err);
+    console.error(constants.ERR.DEFAULT, err);
   });
 
   if (user) {
@@ -34,12 +34,12 @@ export const register = async (req, res) => {
 
   const hashedPassword = await bcrypt
     .hash(password, parseInt(constants.BCRYPT_SALT_ROUND))
-    .catch((err) => console.log(constants.ERR.DEFAULT, err));
+    .catch((err) => console.error(constants.ERR.DEFAULT, err));
 
   const newUser = new db.User({ email, password: hashedPassword });
 
   const savedUser = await newUser.save().catch((err) => {
-    console.log(constants.ERR.DEFAULT, err);
+    console.error(constants.ERR.DEFAULT, err);
   });
 
   if (savedUser) {
@@ -51,7 +51,7 @@ export const register = async (req, res) => {
     });
 
     const savedUserProfile = await newUserProfile.save().catch((err) => {
-      console.log(constants.ERR.DEFAULT, err);
+      console.error(constants.ERR.DEFAULT, err);
     });
 
     if (savedUserProfile)
@@ -79,7 +79,7 @@ export const login = async (req, res) => {
     return res.json({ status: 400, message: "Password is required!" });
   }
   const user = await db.User.findOne({ where: { email } }).catch((err) => {
-    console.log(constants.ERR.DEFAULT, err);
+    console.error(constants.ERR.DEFAULT, err);
   });
   if (!user) {
     return res.json({
@@ -90,7 +90,7 @@ export const login = async (req, res) => {
   const userProfile = await db.UserProfile.findOne({
     where: { userId: user.id },
   }).catch((err) => {
-    console.log(constants.ERR.DEFAULT, err);
+    console.error(constants.ERR.DEFAULT, err);
   });
   bcrypt.compare(password, user.password, (err, isSame) => {
     if (err) {
@@ -125,7 +125,7 @@ export const getProfile = async (req, res) => {
   const userProfile = await db.UserProfile.findOne({
     where: { userId: decodedUser.id },
   }).catch((err) => {
-    console.log(constants.ERR.DEFAULT, err);
+    console.error(constants.ERR.DEFAULT, err);
   });
   if (!userProfile) {
     res.json({

@@ -408,7 +408,11 @@ function HomePage() {
         <Box
           component="div"
           mt={2}
-          style={{ color: "var(--main-content-text-color)" }}
+          style={{
+            color: "var(--main-content-text-color)",
+            whiteSpace: "pre-wrap",
+            lineHeight: "1.5rem",
+          }}
         >
           {data?.data?.data[0]}
         </Box>
@@ -424,7 +428,11 @@ function HomePage() {
         <Box
           component="div"
           mt={2}
-          style={{ color: "var(--main-content-text-color)" }}
+          style={{
+            color: "var(--main-content-text-color)",
+            whiteSpace: "pre-wrap",
+            lineHeight: "1.5rem",
+          }}
         >
           {data?.data?.data[1]}
         </Box>
@@ -439,14 +447,20 @@ function HomePage() {
         <Box
           component="div"
           mt={2}
-          style={{ color: "var(--main-content-text-color)" }}
+          style={{
+            color: "var(--main-content-text-color)",
+            whiteSpace: "pre-wrap",
+            lineHeight: "1.5rem",
+          }}
         >
           {data?.data?.data[2]}
         </Box>
         <Box
           component="h4"
           mt={5}
-          style={{ color: "var(--main-content-text-color)" }}
+          style={{
+            color: "var(--main-content-text-color)",
+          }}
         >
           4) Define what trade secrets are and how they apply to the project,
           offer guidance on securing trade secrets.
@@ -454,7 +468,11 @@ function HomePage() {
         <Box
           component="div"
           mt={2}
-          style={{ color: "var(--main-content-text-color)" }}
+          style={{
+            color: "var(--main-content-text-color)",
+            whiteSpace: "pre-wrap",
+            lineHeight: "1.5rem",
+          }}
         >
           {data?.data?.data[3]}
         </Box>
