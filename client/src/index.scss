@@ -1,0 +1,54 @@
+*,
+*::before,
+*::after {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// biến color
+$main-white-color: #f1f1f1;
+$main-dark-blue-color: #152238;
+$main-red-color: #fe3a3a;
+$main-light-blue-color: #485468;
+$main-dark-white-color-02: rgba(187, 187, 187, 0.2);
+$main-dark-white-color-08: rgba(187, 187, 187, 0.8);
+$minor-dark-blue-color-02: rgba(0, 13, 37, 0.2);
+$minor-dark-blue-color-08: rgba(0, 13, 37, 0.8);
+
+:root {
+  --main-bg-color: #{$main-white-color};
+  --main-content-text-color: #{$main-dark-blue-color};
+  --main-title-color: #{$main-red-color};
+  --main-box-shadow-color: #{$main-light-blue-color};
+  --main-hover-color: #{$main-dark-white-color-02};
+  --main-active-color: #{$main-dark-white-color-08};
+}
+
+[data-theme="dark"] {
+  --main-bg-color: #{$main-dark-blue-color};
+  --main-content-text-color: #{$main-white-color};
+  --main-title-color: #{$main-red-color};
+  --main-box-shadow-color: #{$main-light-blue-color};
+  --main-hover-color: #{$minor-dark-blue-color-02};
+  --main-active-color: #{$minor-dark-blue-color-08};
+}
+
+.main-border {
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--main-content-text-color);
+  border-radius: 4px;
+}
+
+.user-profile-hover {
+  &:hover {
+    background-color: var(--main-hover-color);
+    border-radius: 9999px;
+  }
+  &:active {
+    background-color: var(--main-active-color);
+    border-radius: 9999px;
+  }
+}
