@@ -80,11 +80,12 @@ const Login = ({ setUserData }: LoginProps) => {
       justifyContent="center"
       sx={{
         minHeight: "100vh",
+        backgroundColor: "#f5f6fa",
       }}
     >
       <Grid item xs={12} sm={8} md={4} lg={3} xl={3}>
         <Box
-          className="main-border "
+          className="main-border"
           component="div"
           sx={{
             width: "calc(300px + 5vw)",
@@ -98,17 +99,17 @@ const Login = ({ setUserData }: LoginProps) => {
             <CustomTypography
               color="var(--main-content-text-color)"
               fontSize="24px !important"
-              fontWeight="900 !important"
+              fontWeight="700 !important"
             >
               SIGN IN
             </CustomTypography>
           </Box>
-          <Box component="div" px={4} mb={3}>
+          <Box component="div" px={4} mb={1}>
             <Box component="div" p={1}>
               <CustomTextField
                 id="email"
                 label="Email"
-                variant="standard"
+                variant="outlined"
                 inputProps={{ maxLength: 50 }}
                 fullWidth
                 value={email}
@@ -129,7 +130,7 @@ const Login = ({ setUserData }: LoginProps) => {
               <CustomTextField
                 id="password"
                 label="Password"
-                variant="standard"
+                variant="outlined"
                 inputProps={{ maxLength: 15 }}
                 type="password"
                 fullWidth
@@ -155,7 +156,11 @@ const Login = ({ setUserData }: LoginProps) => {
             sx={{ paddingX: 5 }}
             mb={2}
           >
-            <ButtonPrimary fullWidth onClick={handleClickLogin}>
+            <ButtonPrimary
+              variant="contained"
+              fullWidth
+              onClick={handleClickLogin}
+            >
               Log In
             </ButtonPrimary>
           </Box>
@@ -174,7 +179,7 @@ const Login = ({ setUserData }: LoginProps) => {
                 sx={{
                   fontSize: "14px",
                   marginLeft: 1,
-                  color: "var(--main-content-text-color)",
+                  color: "#377dff",
                   "&:hover": {
                     cursor: "pointer",
                   },

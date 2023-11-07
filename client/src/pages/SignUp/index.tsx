@@ -109,16 +109,16 @@ const SignUp = () => {
             }}
             p={{ xs: "32px 0px", sm: "32px 8px" }}
           >
-            <Box component="div" display="flex" justifyContent="center" mb={3}>
+            <Box component="div" display="flex" justifyContent="center">
               <CustomTypography
                 color="var(--main-content-text-color)"
                 fontSize="24px !important"
-                fontWeight="900 !important"
+                fontWeight="700 !important"
               >
                 SIGN UP
               </CustomTypography>
             </Box>
-            <Box component="div" px={4} py={2} mb={1}>
+            <Box component="div" px={4} py={1} mb={1}>
               <Box component="form" noValidate autoComplete="off">
                 <Box component="div" p={1}>
                   <Stack
@@ -130,7 +130,7 @@ const SignUp = () => {
                       <CustomTextField
                         id="first-name"
                         label="First name"
-                        variant="standard"
+                        variant="outlined"
                         inputProps={{ maxLength: 50 }}
                         fullWidth
                         value={firstName}
@@ -149,7 +149,7 @@ const SignUp = () => {
                       <CustomTextField
                         id="last-name"
                         label="Last name"
-                        variant="standard"
+                        variant="outlined"
                         inputProps={{ maxLength: 50 }}
                         fullWidth
                         value={lastName}
@@ -170,7 +170,7 @@ const SignUp = () => {
                   <CustomTextField
                     id="email"
                     label="Email"
-                    variant="standard"
+                    variant="outlined"
                     inputProps={{ maxLength: 50 }}
                     fullWidth
                     value={email}
@@ -195,7 +195,7 @@ const SignUp = () => {
                       <CustomTextField
                         id="password"
                         label="Password"
-                        variant="standard"
+                        variant="outlined"
                         inputProps={{ maxLength: 15 }}
                         type="password"
                         fullWidth
@@ -215,7 +215,7 @@ const SignUp = () => {
                       <CustomTextField
                         id="confirm-password"
                         label="Confirm Password"
-                        variant="standard"
+                        variant="outlined"
                         inputProps={{ maxLength: 15 }}
                         type="password"
                         fullWidth
@@ -242,7 +242,7 @@ const SignUp = () => {
                     <CustomTextField
                       id="company-name"
                       label="Company name"
-                      variant="standard"
+                      variant="outlined"
                       inputProps={{ maxLength: 50 }}
                       fullWidth
                       value={companyName}
@@ -252,6 +252,7 @@ const SignUp = () => {
                 </Box>
               </Box>
             </Box>
+
             <Box
               component="div"
               display="flex"
@@ -259,7 +260,11 @@ const SignUp = () => {
               sx={{ paddingX: 5 }}
               mb={2}
             >
-              <ButtonPrimary fullWidth onClick={handleClickSignUp}>
+              <ButtonPrimary
+                variant="contained"
+                fullWidth
+                onClick={handleClickSignUp}
+              >
                 Sign Up
               </ButtonPrimary>
             </Box>
@@ -270,19 +275,15 @@ const SignUp = () => {
               sx={{ paddingX: 5 }}
               alignItems="center"
             >
-              <Typography
-                fontSize={14}
-                color="var(--main-content-text-color)"
-                sx={{ opacity: "0.7" }}
-              >
+              <Typography fontSize={14} color="var(--main-content-text-color)">
                 Already have an account?
               </Typography>
               <Box component="div" onClick={() => navigate("/login")}>
                 <Typography
                   fontSize={14}
                   ml={1}
-                  color="var(--main-title-color)"
                   sx={{
+                    color: "#377dff",
                     opacity: "0.7",
                     "&:hover": {
                       cursor: "pointer",

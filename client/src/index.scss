@@ -9,7 +9,7 @@
 
 // biến color
 $main-white-color: #ffffff;
-$main-dark-blue-color: #526484;
+$main-dark-blue-color: #1e2022;
 $main-red-color: #364a63;
 $main-light-blue-color: #485468;
 $main-dark-white-color-02: #6576ff;
@@ -38,7 +38,7 @@ $minor-dark-blue-color-08: rgba(0, 13, 37, 0.8);
 .main-border {
   border-width: 1px;
   border-style: solid;
-  border-color: var(--main-content-text-color);
+  border-color: rgba(0, 0, 0, 0.125);
   border-radius: 4px;
 }
 

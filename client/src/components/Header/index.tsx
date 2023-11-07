@@ -49,7 +49,7 @@ const Header = ({ onClickDarkMode, userData, onLogout }: HeaderProps) => {
         borderBottom: "1px solid var(--main-content-text-color)",
         width: "100%",
         height: "68.5px",
-        background: "var(--main-bg-color)",
+        background: "#f5f6fa",
       }}
     >
       <Box
