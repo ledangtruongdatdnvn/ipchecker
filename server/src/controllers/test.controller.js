@@ -106,7 +106,7 @@ const processDocument = async (description, background) => {
       background;
   }
 
-  console.log(context);
+  // console.log(context);
 
   let answers = [];
 
@@ -118,7 +118,7 @@ const processDocument = async (description, background) => {
     try {
       chatGPTMessage = await chatGPT(context, `${text}`);
 
-      console.log(chatGPTMessage);
+      // console.log(chatGPTMessage);
 
       answers.push(chatGPTMessage);
     } catch (error) {

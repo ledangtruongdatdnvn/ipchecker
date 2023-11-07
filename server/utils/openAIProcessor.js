@@ -2,7 +2,7 @@ import { openai } from "../src/app.js";
 
 export const chatGPT = async (context, text) => {
   const response = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo-16k",
+    model: "gpt-4-1106-preview",
     messages: [
       {
         role: "system",

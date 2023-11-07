@@ -8,14 +8,14 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     if (file.fieldname == "files") {
-      const fileName = `${Date.now()}-description-${
+      const fileName = `${Date.now()}-${uuidv4()}-description-${
         file.originalname
-      }-${uuidv4()}`;
+      }`;
       cb(null, fileName); // Set the file name for the uploaded file
     } else if (file.fieldname == "bFiles") {
-      const fileName = `${Date.now()}-background-${
+      const fileName = `${Date.now()}-${uuidv4()}-background-${
         file.originalname
-      }-${uuidv4()}`;
+      }`;
       cb(null, fileName); // Set the file name for the uploaded file
     }
   },
