@@ -2,7 +2,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Grid, IconButton } from "@mui/material";
 import { Box } from "@mui/system";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ButtonTransparent from "../../components/ButtonTransparent";
 import CustomTextField from "../../components/CustomTextField";
 import { toast } from "react-toastify";
@@ -71,15 +71,37 @@ function HomePage() {
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
     setSelectedFiles(files);
+    e.target.value = "";
   };
 
   const handleBFileChange = (e) => {
     const files = Array.from(e.target.files);
     setBSelectedFiles(files);
+    e.target.value = "";
   };
 
-  const handleClickDelete = () => {
-    console.log("Deleted!");
+  const handleClickDeleteFile = (index) => {
+    const newFiles = [...selectedFiles];
+    newFiles.splice(index, 1);
+    setSelectedFiles(newFiles);
+  };
+
+  const handleClickDeleteBLink = (index) => {
+    const newBLinks = [...bLinks];
+    newBLinks.splice(index, 1);
+    setBLinks(newBLinks);
+  };
+
+  const handleClickDeleteLink = (index) => {
+    const newLinks = [...links];
+    newLinks.splice(index, 1);
+    setLinks(newLinks);
+  };
+
+  const handleClickDeleteBFile = (index) => {
+    const newFiles = [...bSelectedFiles];
+    newFiles.splice(index, 1);
+    setBSelectedFiles(newFiles);
   };
 
   const handleSubmit = async () => {
@@ -110,6 +132,7 @@ function HomePage() {
 
       try {
         setLoading(true);
+        setData({});
         // Replace with your API endpoint
         const response = await axios.post(
           `${process.env.REACT_APP_API_URL}/test/submit-form`,
@@ -159,25 +182,33 @@ function HomePage() {
     <Box p={2}>
       <Box
         component="div"
-        className="main-border "
+        className="main-border"
         sx={{
-          background: "var(--main-bg-color)",
-          boxShadow: "0px 0px 10px var(--main-bg-color)",
-          borderRadius: "4px",
-          padding: { xs: "32px 0px", sm: "32px 8px" },
+          padding: { xs: "0.5rem 8px", sm: "0.5rem 8px" },
         }}
       >
-        <Box component="h3">Input</Box>
+        <Box
+          component="h3"
+          fontWeight={600}
+          color="var(--main-content-text-color)"
+        >
+          Input
+        </Box>
         <Box
           component="hr"
           style={{
             background: "var(--main-content-text-color)",
             height: "1px",
           }}
-          mt={2}
-          mb={5}
+          mt={1}
+          mb={2}
         ></Box>
-        <Box component="h4" mb={3} textAlign="center">
+        <Box
+          component="h4"
+          mb={2}
+          textAlign="center"
+          color="var(--main-content-text-color)"
+        >
           Description (please upload your document(s) or specify web page
           link(s) that have your product features or product description)
         </Box>
@@ -191,8 +222,13 @@ function HomePage() {
               onChange={handleFileChange}
               accept={".pdf"}
             />
-            <ButtonTransparent style={{ height: "48px" }}>
-              <label htmlFor="file-upload">Upload File</label>
+
+            <ButtonTransparent
+              onClick={() => {
+                document.getElementById("file-upload").click();
+              }}
+            >
+              Upload File
             </ButtonTransparent>
 
             {selectedFiles.map((file, index) => (
@@ -204,13 +240,17 @@ function HomePage() {
                 style={{
                   color: "var(--main-content-text-color)",
                   borderBottom: "1px solid var(--main-content-text-color)",
+                  fontSize: "14px",
                 }}
                 key={index}
               >
                 <Box component="div">{file.name}</Box>
-                <IconButton onClick={handleClickDelete}>
+                <IconButton onClick={() => handleClickDeleteFile(index)}>
                   <DeleteIcon
-                    style={{ color: "var(--main-content-text-color)" }}
+                    style={{
+                      color: "var(--main-content-text-color)",
+                      fontSize: "20px",
+                    }}
                   ></DeleteIcon>
                 </IconButton>
               </Box>
@@ -220,18 +260,15 @@ function HomePage() {
             <Box display="flex" gap="1rem">
               <CustomTextField
                 id="link"
-                label="Link"
                 variant="standard"
+                placeholder="Link"
                 inputProps={{ maxLength: 500 }}
                 style={{ minWidth: "25vw" }}
                 value={value}
                 onChange={handleInputChange}
               />
               <Box>
-                <ButtonTransparent
-                  onClick={handleAddLink}
-                  style={{ height: "48px" }}
-                >
+                <ButtonTransparent onClick={handleAddLink}>
                   Add Link
                 </ButtonTransparent>
               </Box>
@@ -245,6 +282,7 @@ function HomePage() {
                 style={{
                   color: "var(--main-content-text-color)",
                   borderBottom: "1px solid var(--main-content-text-color)",
+                  fontSize: "14px",
                 }}
                 key={index}
               >
@@ -258,17 +296,26 @@ function HomePage() {
                 >
                   {link}
                 </Box>
-                <IconButton onClick={handleClickDelete}>
+                <IconButton onClick={() => handleClickDeleteLink(index)}>
                   <DeleteIcon
-                    style={{ color: "var(--main-content-text-color)" }}
+                    style={{
+                      color: "var(--main-content-text-color)",
+                      fontSize: "20px",
+                    }}
                   ></DeleteIcon>
                 </IconButton>
               </Box>
             ))}
           </Grid>
         </Grid>
-        <Box component="h4" mb={3} mt={3} textAlign="center">
-          Background (Optional- please upload your document/pitch desk or
+        <Box
+          component="h4"
+          mb={2}
+          mt={2}
+          textAlign="center"
+          color="var(--main-content-text-color)"
+        >
+          Background (optional- please upload your document/pitch desk or
           specify web page links that have your product background and/or your
           mission statement)
         </Box>
@@ -282,8 +329,12 @@ function HomePage() {
               onChange={handleBFileChange}
               accept={".pdf"}
             />
-            <ButtonTransparent style={{ height: "48px" }}>
-              <label htmlFor="b-file-upload">Upload File</label>
+            <ButtonTransparent
+              onClick={() => {
+                document.getElementById("b-file-upload").click();
+              }}
+            >
+              Upload File
             </ButtonTransparent>
 
             {bSelectedFiles.map((file, index) => (
@@ -295,13 +346,17 @@ function HomePage() {
                 style={{
                   color: "var(--main-content-text-color)",
                   borderBottom: "1px solid var(--main-content-text-color)",
+                  fontSize: "14px",
                 }}
                 key={index}
               >
                 <Box component="div">{file.name}</Box>
-                <IconButton onClick={handleClickDelete}>
+                <IconButton onClick={() => handleClickDeleteBFile(index)}>
                   <DeleteIcon
-                    style={{ color: "var(--main-content-text-color)" }}
+                    style={{
+                      color: "var(--main-content-text-color)",
+                      fontSize: "20px",
+                    }}
                   ></DeleteIcon>
                 </IconButton>
               </Box>
@@ -311,18 +366,15 @@ function HomePage() {
             <Box display="flex" gap="1rem">
               <CustomTextField
                 id="link"
-                label="Link"
                 variant="standard"
+                placeholder="Link"
                 inputProps={{ maxLength: 500 }}
                 style={{ minWidth: "25vw" }}
                 value={bValue}
                 onChange={handleBInputChange}
               />
               <Box>
-                <ButtonTransparent
-                  onClick={handleAddBLink}
-                  style={{ height: "48px" }}
-                >
+                <ButtonTransparent onClick={handleAddBLink}>
                   Add Link
                 </ButtonTransparent>
               </Box>
@@ -336,6 +388,7 @@ function HomePage() {
                 style={{
                   color: "var(--main-content-text-color)",
                   borderBottom: "1px solid var(--main-content-text-color)",
+                  fontSize: "14px",
                 }}
                 key={index}
               >
@@ -349,9 +402,12 @@ function HomePage() {
                 >
                   {link}
                 </Box>
-                <IconButton onClick={handleClickDelete}>
+                <IconButton onClick={() => handleClickDeleteBLink(index)}>
                   <DeleteIcon
-                    style={{ color: "var(--main-content-text-color)" }}
+                    style={{
+                      color: "var(--main-content-text-color)",
+                      fontSize: "20px",
+                    }}
                   ></DeleteIcon>
                 </IconButton>
               </Box>
@@ -365,8 +421,8 @@ function HomePage() {
             background: "var(--main-content-text-color)",
             height: "1px",
           }}
-          mt={5}
-          mb={2}
+          mt={2}
+          mb={1}
         ></Box>
         <Box display="flex" justifyContent="center">
           <ButtonTransparent onClick={handleSubmit}>
@@ -378,36 +434,30 @@ function HomePage() {
       </Box>
       <Box
         component="div"
-        className="main-border "
-        mt={3}
+        className="main-border"
+        mt={2}
         sx={{
-          background: "var(--main-bg-color)",
-          boxShadow: "0px 0px 10px var(--main-bg-color)",
-          borderRadius: "4px",
-          padding: { xs: "32px 0px", sm: "32px 8px" },
+          padding: { xs: "0.5rem 8px", sm: "0.5rem 8px" },
         }}
       >
-        <Box component="h3">Output</Box>
+        <Box
+          component="h3"
+          fontWeight={600}
+          color="var(--main-content-text-color)"
+        >
+          1. Potential Patentable Claims
+        </Box>
         <Box
           component="hr"
           style={{
             background: "var(--main-content-text-color)",
             height: "1px",
           }}
-          mt={2}
-          mb={5}
+          mt={1}
+          mb={2}
         ></Box>
         <Box
-          component="h4"
-          mt={5}
-          style={{ color: "var(--main-content-text-color)" }}
-        >
-          1) Given the provided background and the provided product features,
-          create claims for potential patentable IP.
-        </Box>
-        <Box
           component="div"
-          mt={2}
           style={{
             color: "var(--main-content-text-color)",
             whiteSpace: "pre-wrap",
@@ -416,15 +466,25 @@ function HomePage() {
         >
           {data?.data?.data[0]}
         </Box>
+      </Box>
+      <Box
+        component="div"
+        className="main-border"
+        mt={2}
+        sx={{
+          padding: { xs: "0.5rem 8px", sm: "0.5rem 8px" },
+        }}
+      >
         <Box
-          component="h4"
-          mt={5}
-          style={{ color: "var(--main-content-text-color)" }}
+          component="h3"
+          fontWeight={600}
+          color="var(--main-content-text-color)"
+          paddingBottom={1}
+          sx={{ borderBottom: "1px solid var(--main-content-text-color)" }}
         >
-          2) From all the provided content, find all the trademark usages,
-          suggest potential trademarks, and describe who trademark can project
-          you and your company.
+          2. Trademark usage and potential trademarks
         </Box>
+
         <Box
           component="div"
           mt={2}
@@ -436,14 +496,25 @@ function HomePage() {
         >
           {data?.data?.data[1]}
         </Box>
+      </Box>
+      <Box
+        component="div"
+        className="main-border"
+        mt={2}
+        sx={{
+          padding: { xs: "0.5rem 8px", sm: "0.5rem 8px" },
+        }}
+      >
         <Box
-          component="h4"
-          mt={5}
-          style={{ color: "var(--main-content-text-color)" }}
+          component="h3"
+          fontWeight={600}
+          color="var(--main-content-text-color)"
+          paddingBottom={1}
+          sx={{ borderBottom: "1px solid var(--main-content-text-color)" }}
         >
-          3) Exam copyright usage on the website and in user submitted content,
-          describe how copyrights can secure the content.
+          3. Copyright usage
         </Box>
+
         <Box
           component="div"
           mt={2}
@@ -455,16 +526,25 @@ function HomePage() {
         >
           {data?.data?.data[2]}
         </Box>
+      </Box>
+      <Box
+        component="div"
+        className="main-border"
+        mt={2}
+        sx={{
+          padding: { xs: "0.5rem 8px", sm: "0.5rem 8px" },
+        }}
+      >
         <Box
-          component="h4"
-          mt={5}
-          style={{
-            color: "var(--main-content-text-color)",
-          }}
+          component="h3"
+          fontWeight={600}
+          color="var(--main-content-text-color)"
+          paddingBottom={1}
+          sx={{ borderBottom: "1px solid var(--main-content-text-color)" }}
         >
-          4) Define what trade secrets are and how they apply to the project,
-          offer guidance on securing trade secrets.
+          4. Trade secrets
         </Box>
+
         <Box
           component="div"
           mt={2}

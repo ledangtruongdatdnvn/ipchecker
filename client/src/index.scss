@@ -8,13 +8,13 @@
 }
 
 // biến color
-$main-white-color: #f1f1f1;
-$main-dark-blue-color: #152238;
-$main-red-color: #fe3a3a;
+$main-white-color: #ffffff;
+$main-dark-blue-color: #526484;
+$main-red-color: #364a63;
 $main-light-blue-color: #485468;
-$main-dark-white-color-02: rgba(187, 187, 187, 0.2);
+$main-dark-white-color-02: #6576ff;
 $main-dark-white-color-08: rgba(187, 187, 187, 0.8);
-$minor-dark-blue-color-02: rgba(0, 13, 37, 0.2);
+$minor-dark-blue-color-02: #7f8dff;
 $minor-dark-blue-color-08: rgba(0, 13, 37, 0.8);
 
 :root {
@@ -36,19 +36,23 @@ $minor-dark-blue-color-08: rgba(0, 13, 37, 0.8);
 }
 
 .main-border {
-  border-width: 2px;
+  border-width: 1px;
   border-style: solid;
   border-color: var(--main-content-text-color);
   border-radius: 4px;
 }
 
 .user-profile-hover {
+  border: 1px solid transparent;
+  transition: all 0.3s ease, filter 0.2s ease;
   &:hover {
-    background-color: var(--main-hover-color);
+    border: 1px solid var(--main-hover-color);
+    color: var(--main-hover-color);
     border-radius: 9999px;
   }
   &:active {
-    background-color: var(--main-active-color);
+    border: 1px solid var(--main-hover-color);
+    color: var(--main-hover-color);
     border-radius: 9999px;
   }
 }
