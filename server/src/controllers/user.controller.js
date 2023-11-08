@@ -55,7 +55,10 @@ export const register = async (req, res) => {
     });
 
     if (savedUserProfile)
-      return res.json({ status: 200, message: "Thank for registering user!" });
+      return res.json({
+        status: 200,
+        message: "Thank you for your registration!",
+      });
     else {
       return res.json({
         status: 500,

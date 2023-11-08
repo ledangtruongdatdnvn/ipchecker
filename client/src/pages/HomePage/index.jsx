@@ -192,19 +192,12 @@ function HomePage() {
         <Box
           component="h3"
           fontWeight={500}
+          mb={3}
           color="var(--main-content-text-color)"
         >
           Input
         </Box>
-        <Box
-          component="hr"
-          style={{
-            background: "#377DFF",
-            height: "1px",
-          }}
-          mt={1}
-          mb={2}
-        ></Box>
+
         <Box
           component="div"
           mb={2}
@@ -420,21 +413,7 @@ function HomePage() {
           </Grid>
         </Grid>
 
-        <Box
-          component="hr"
-          style={{
-            background: "#377DFF",
-            height: "1px",
-          }}
-          mt={2}
-          mb={1}
-        ></Box>
-        <Box display="flex" justifyContent="center">
-          {/* <ButtonTransparent onClick={handleSubmit}>
-            <Box component="div" display="flex" gap={1} alignItems="center">
-              Submit {loading && <CircularProgress size={18} />}
-            </Box>
-          </ButtonTransparent> */}
+        <Box display="flex" justifyContent="center" mt={3}>
           <ButtonPrimary variant="contained" onClick={handleSubmit}>
             <Box component="div" display="flex" gap={1} alignItems="center">
               Submit{" "}
@@ -448,6 +427,7 @@ function HomePage() {
           </ButtonPrimary>
         </Box>
       </Box>
+
       <Box
         component="div"
         className="main-border"
@@ -464,17 +444,10 @@ function HomePage() {
         >
           1. Potential Patentable Claims
         </Box>
-        <Box
-          component="hr"
-          style={{
-            background: "#377DFF",
-            height: "1px",
-          }}
-          mt={1}
-          mb={2}
-        ></Box>
+
         <Box
           component="div"
+          mt={2}
           style={{
             color: "var(--main-content-text-color)",
             whiteSpace: "pre-wrap",
@@ -497,8 +470,6 @@ function HomePage() {
           component="h3"
           fontWeight={500}
           color="var(--main-content-text-color)"
-          paddingBottom={1}
-          sx={{ borderBottom: "1px solid #377DFF" }}
         >
           2. Trademark usage and potential trademarks
         </Box>
@@ -528,8 +499,6 @@ function HomePage() {
           component="h3"
           fontWeight={500}
           color="var(--main-content-text-color)"
-          paddingBottom={1}
-          sx={{ borderBottom: "1px solid #377DFF" }}
         >
           3. Copyright usage
         </Box>
@@ -559,8 +528,6 @@ function HomePage() {
           component="h3"
           fontWeight={500}
           color="var(--main-content-text-color)"
-          paddingBottom={1}
-          sx={{ borderBottom: "1px solid #377DFF" }}
         >
           4. Trade secrets
         </Box>
