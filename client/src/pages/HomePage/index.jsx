@@ -224,7 +224,7 @@ function HomePage() {
                 document.getElementById("file-upload").click();
               }}
             >
-              Upload Files
+              Upload Files (PDF Only)
             </ButtonTransparent>
 
             {selectedFiles.map((file, index) => (
@@ -266,7 +266,7 @@ function HomePage() {
               />
 
               <ButtonTransparent onClick={handleAddLink}>
-                Add Links
+                Save
               </ButtonTransparent>
             </Box>
             {links.map((link, index) => (
@@ -332,7 +332,7 @@ function HomePage() {
                 document.getElementById("b-file-upload").click();
               }}
             >
-              Upload Files
+              Upload Files (PDF only)
             </ButtonTransparent>
 
             {bSelectedFiles.map((file, index) => (
@@ -374,7 +374,7 @@ function HomePage() {
               />
 
               <ButtonTransparent onClick={handleAddBLink}>
-                Add Links
+                Save
               </ButtonTransparent>
             </Box>
             {bLinks.map((link, index) => (
