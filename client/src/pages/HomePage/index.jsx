@@ -185,7 +185,7 @@ function HomePage() {
         component="div"
         className="main-border"
         sx={{
-          padding: { xs: "0.5rem 8px", sm: "0.5rem 8px" },
+          padding: { xs: "0.5rem 8px", sm: "1rem 20px" },
           backgroundColor: "#fff",
         }}
       >
@@ -413,7 +413,7 @@ function HomePage() {
           </Grid>
         </Grid>
 
-        <Box display="flex" justifyContent="center" mt={3}>
+        <Box display="flex" justifyContent="end" mt={3}>
           <ButtonPrimary variant="contained" onClick={handleSubmit}>
             <Box component="div" display="flex" gap={1} alignItems="center">
               Submit{" "}
@@ -433,7 +433,7 @@ function HomePage() {
         className="main-border"
         mt={2}
         sx={{
-          padding: { xs: "0.5rem 8px", sm: "0.5rem 8px" },
+          padding: { xs: "0.5rem 8px", sm: "1rem 20px" },
           backgroundColor: "#fff",
         }}
       >
@@ -462,7 +462,7 @@ function HomePage() {
         className="main-border"
         mt={2}
         sx={{
-          padding: { xs: "0.5rem 8px", sm: "0.5rem 8px" },
+          padding: { xs: "0.5rem 8px", sm: "1rem 20px" },
           backgroundColor: "#fff",
         }}
       >
@@ -491,7 +491,7 @@ function HomePage() {
         className="main-border"
         mt={2}
         sx={{
-          padding: { xs: "0.5rem 8px", sm: "0.5rem 8px" },
+          padding: { xs: "0.5rem 8px", sm: "1rem 20px" },
           backgroundColor: "#fff",
         }}
       >
@@ -520,7 +520,7 @@ function HomePage() {
         className="main-border"
         mt={2}
         sx={{
-          padding: { xs: "0.5rem 8px", sm: "0.5rem 8px" },
+          padding: { xs: "0.5rem 8px", sm: "1rem 20px" },
           backgroundColor: "#fff",
         }}
       >
