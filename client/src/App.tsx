@@ -81,10 +81,16 @@ const App = () => {
       data-theme={isDarkMode ? "dark" : "light"}
       sx={{
         minHeight: "100vh",
-        backgroundColor: isDarkMode ? "#233142" : "#fff",
+        backgroundColor: "#f5f6fa",
       }}
     >
-      <Box component="div">
+      <Box
+        component="div"
+        sx={{
+          marginLeft: "8rem",
+          marginRight: "8rem",
+        }}
+      >
         <ToastContainer
           toastStyle={
             isDarkMode

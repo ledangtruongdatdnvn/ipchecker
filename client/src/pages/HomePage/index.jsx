@@ -180,7 +180,7 @@ function HomePage() {
   };
 
   return (
-    <Box p={2} sx={{ backgroundColor: "#f5f6fa" }}>
+    <Box pt={2}>
       <Box
         component="div"
         className="main-border"

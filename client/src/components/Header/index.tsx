@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import userAvatar from "../../assets/images/user-avatar.jpg";
+import logo from "../../assets/images/logo_large.png";
 import RouterPath from "../../router/RouterPath";
 import { logout } from "../../slice/loginSlice";
 import Avatar from "../Avatar";
@@ -71,11 +72,12 @@ const Header = ({ onClickDarkMode, userData, onLogout }: HeaderProps) => {
             alignItems="center"
             onClick={() => navigate(RouterPath.HOME)}
           >
-            <PublicIcon
+            {/* <PublicIcon
               sx={{ color: "var(--main-content-text-color)" }}
               fontSize="large"
-            />
-            <Box component="div">
+            /> */}
+            <Box component="img" src={logo} height="30px"></Box>
+            {/* <Box component="div">
               <CustomTypography
                 fontWeight="900 !important"
                 fontSize="18px !important"
@@ -93,7 +95,7 @@ const Header = ({ onClickDarkMode, userData, onLogout }: HeaderProps) => {
               >
                 Easy Demo App
               </CustomTypography>
-            </Box>
+            </Box> */}
           </Box>
         </Box>
         <Box
